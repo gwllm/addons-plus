@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<openerp>
+    <data>
+        <menuitem name='OpenAcademy' id="openacademy_main_menu"/>
+        <menuitem name='OpenAcademy' id="openacademy_menu" parent="openacademy_main_menu" />
+    	
+	<!-- Courses views -->   		
+
+         <record model="ir.ui.view" id="view_course_tree">
+           <field name="name">openacademy.course.tree</field>
+           <field name="model">openacademy.course</field>
+           <field name="arch" type="xml">
+               <tree string="Courses">
+                   <field name="name"/>
+               </tree>
+           </field>
+       	</record>
+<record id="course_action" model="ir.actions.act_window">
+<field name="res_model">openacademy.course</field>
+<field name="view_type">form</field>
+<field name="name">Courses</field>
+<field name="view_mode">tree,form</field>
+<field name="context">{'search_default_my_course':1}</field> <!--variable que comunica msjs entre objetos-->
+</record>
+	<menuitem name="Courses" parent="openacademy_menu" id="course_menu" action="course_action"/>
+    </data>
+</openerp>
